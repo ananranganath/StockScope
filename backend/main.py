@@ -1,6 +1,7 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from pydantic import BaseModel
+import yfinance as yf
 
 app = FastAPI()
 
@@ -23,7 +24,13 @@ def home():
 
 @app.post("/analyze")
 def analyze_stock(stock: StockRequest):
+    ticker = yf.Ticker(stock.ticker)
+
+    info = ticker.info
+
     return {
         "ticker": stock.ticker.upper(),
-        "message": f"Analyzing {stock.ticker.upper()}..."
+        "company": info.get("longName"),
+        "price": info.get("currentPrice"),
+        "currency": info.get("currency")
     }
