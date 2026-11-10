@@ -25,3 +25,19 @@ export async function getStock(ticker: string): Promise<STOCK> {
     }
     return body;
 }
+
+export type PricePoint = {
+    date: string;
+    close: number;
+};
+
+export async function getHistory(ticker: string, period: string): Promise<PricePoint[]> {
+    const response = await fetch(
+        `${API_URL}/api/stocks/${encodeURIComponent(ticker)}/history?period=${period}`
+    );
+    const body = await response.json();
+    if (!response.ok) {
+        throw new Error(body.detail ?? "COuldn't load price hsitroy.");
+    }
+    return body.points;
+}

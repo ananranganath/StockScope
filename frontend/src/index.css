@@ -33,3 +33,26 @@ button {
 .error {
     color: #b3392f;
 }
+
+.chart {
+    margin-top: 32px;
+}
+
+.periods {
+    display: flex;
+    gap: 4px;
+    margin-top: 12px;
+}
+
+.periods button {
+    padding: 4pxx 12px;
+    font-size: 14px;
+    border: 1px solid #9aa8b6;
+    background: white;
+    border-radius: 6px
+}
+
+.periods button.active {
+    background: #1b2733;
+    color: white;
+}

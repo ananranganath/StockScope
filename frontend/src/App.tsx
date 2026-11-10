@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { getStock, type STOCK } from "./api";
+import PriceChart from "./PriceChart";
 
 function App() {
     const [ticker, setTicker] = useState("");
@@ -53,6 +54,8 @@ function App() {
             <p>Industry: {stock.industry ?? "-"}</p>
             <p>Market cap: {stock.market_cap?.toLocaleString() ?? "-"}</p>
             <p>P/E ratio: {stock.pe_ratio?.toFixed(2) ?? "-"}</p>
+            <p> P/E ratio: {stock.pe_ratio?.toFixed(2) ?? "-"}</p>
+            <PriceChart ticker={stock.ticker} />          
           </section>
         )}
       </main>
