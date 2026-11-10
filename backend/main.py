@@ -11,8 +11,9 @@ app.add_middleware(
 @app.get("/api/health")
 def health():
     return {"status": "ok"}
-@app.get ("/api/stocks/{ticker}")
-def get_stock (ticker: str):
+
+@app.get("/api/stocks/{ticker}")
+def get_stock(ticker: str):
     symbol = ticker.strip().upper()
 
     try:
